@@ -1,104 +1,19 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import ScrollReveal from '@/components/ScrollReveal';
+import ScrollReveal from "@/components/ScrollReveal";
 
 type ShopData = {
   shopName: string;
-  websiteUrl: string;
   email: string;
-  phoneNumber: string;
+  contactNumber: string;
 };
 
 type ShopTermsSectionProps = {
-  shopName: string;
+  shopData: ShopData | null;
 };
 
-const ShopTermsSection = ({ shopName }: ShopTermsSectionProps) => {
-  const [shopData, setShopData] = useState<ShopData | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-   useEffect(() => {
-    console.log('shopName:', shopName);
-    if (!shopName) return;
-
-    const fetchShopData = async () => {
-      setError(null);
-      setLoading(true);
-      try {
-        const res = await fetch(`https://api.skorpion.in/fetchShopDetails?shopName=${shopName}`);
-        if (!res.ok) {
-          const text = await res.text();
-          throw new Error(`API returned status ${res.status}: ${text}`);
-        }
-        const data = await res.json();
-
-        if (data?.shopName) {
-          setShopData({
-            shopName: data.shopName,
-            websiteUrl: `https://www.${data.shopName}.com`,
-            email: data.mail,
-            phoneNumber: data.contactNumber,
-          });
-        } else {
-          setError("Invalid API response: Missing shopName");
-          setShopData(null);
-        }
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Unknown error");
-        setShopData(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchShopData();
-  }, [shopName]);
-
-  {/* 
-    useEffect(() => {
-    console.log('shopName:', shopName);
-    if (!shopName) return;
-
-    const fetchShopData = async () => {
-      setError(null);
-      setLoading(true);
-      try {
-        const res = await fetch(https://api.skorpion.in/fetchShopDetails?shopName=${shopName});
-        if (!res.ok) {
-          const text = await res.text();
-          throw new Error(API returned status ${res.status}: ${text});
-        }
-        const data = await res.json();
-
-        if (data?.shopInformation?.shopName) {
-          setShopData({
-            shopName: data.shopInformation.shopName,
-            websiteUrl: https://www.${data.shopInformation.shopName}.com,
-            email: data.shopInformation.mail,
-            phoneNumber: data.shopInformation.contactNumber,
-          });
-        } else {
-          setError("Invalid API response: Missing shopName");
-          setShopData(null);
-        }
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Unknown error");
-        setShopData(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchShopData();
-  }, [shopName]);
-  */}
-
-  if (loading) return <p>Loading shop data...</p>;
-  //if (error) return <p className="text-red-600">Error: {error}</p>;
+const ShopTermsSection = ({ shopData }: ShopTermsSectionProps) => {
   if (!shopData) return <p>No Shop Data available</p>;
-  
-  const { shopName: name, phoneNumber: phone } = shopData;
+
+  const { shopName: name, contactNumber: phone } = shopData;
 
   return (
     <section

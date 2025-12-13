@@ -10,23 +10,28 @@ type Props = {
   };
 };
 
-export async function generateStaticParams() {
-  return [
-    { shop: "zoho" },
-    { shop: "wipro" },
-    { shop: "tcs" }
-  ];
-}
-
-export default function ShopTermsPage({ params }: Props) {
+export default async function ShopTermsPage({ params }: Props) {
   const { shop } = params;
+  const res = await fetch(
+    `https://api.skorpion.in/fetchShopDetails?shopName=${shop}`,
+    { cache: "no-store" }
+  );
+
+  let data = null;
+
+  try {
+    data = await res.json();
+  } catch (error) {
+    console.error("Failed to parse shop data:", error);
+    data = null;
+  }
 
   return (
     <main>
       <FirstSection />
       <FixedUI />
       <TermsAndConditionHeader />
-      <ShopTermsSection shopName={shop} />
+      <ShopTermsSection shopData={data} />
       <Footer />
     </main>
   );
