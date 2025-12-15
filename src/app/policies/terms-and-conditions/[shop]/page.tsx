@@ -3,27 +3,23 @@ import TermsAndConditionHeader from "@/components/TermsAndConditionHeader";
 import ShopTermsSection from "@/components/ShopTermsSection";
 import Footer from "@/components/Footer";
 import FirstSection from "@/components/FirstSection";
+import { getShopData } from "@/lib/shopData";
 
 type Props = {
-  params: {
+  params: Promise<{
     shop: string;
-  };
+  }>;
 };
 
-export default async function ShopTermsPage({ params }: Props) {
-  const { shop } = params;
-  const res = await fetch(
-    `https://api.skorpion.in/fetchShopDetails?shopName=${shop}`,
-    { cache: "no-store" }
-  );
-
+export default async function ShopTermsPage(props: Props) {
+  const { shop } = await props.params;
+  
   let data = null;
-
   try {
-    data = await res.json();
+    data = await getShopData(shop); 
   } catch (error) {
-    console.error("Failed to parse shop data:", error);
-    data = null;
+    console.error("Rendering with null data due to fetch error.");
+    data = null; 
   }
 
   return (
@@ -31,7 +27,7 @@ export default async function ShopTermsPage({ params }: Props) {
       <FirstSection />
       <FixedUI />
       <TermsAndConditionHeader />
-      <ShopTermsSection shopData={data} />
+      <ShopTermsSection shopData={data} /> 
       <Footer />
     </main>
   );

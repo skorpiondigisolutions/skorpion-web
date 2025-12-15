@@ -2,7 +2,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 type ShopData = {
   shopName: string;
-  email: string;
+  mail: string;
   contactNumber: string;
 };
 
