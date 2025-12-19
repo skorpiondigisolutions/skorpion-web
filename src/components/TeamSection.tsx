@@ -235,7 +235,7 @@ const TeamSection = () => {
             </div>
           </ScrollReveal>
 
-          <ScrollReveal>
+          {/* <ScrollReveal>
             <div className="relative group overflow-hidden w-[300px] h-[360px] md:w-full md:h-[300px] lg:h-[320px]">
               <Image
                 src="/images/team-3.jpg"
@@ -251,7 +251,7 @@ const TeamSection = () => {
                 <span className="absolute bottom-0 left-0 h-[6px] w-full bg-[#1ECDFE] transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-in-out" />
               </div>
             </div>
-          </ScrollReveal>
+          </ScrollReveal> */}
 
           <ScrollReveal>
             <div className="relative group overflow-hidden w-[300px] h-[360px] md:w-full md:h-[300px] lg:h-[320px]">
