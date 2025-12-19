@@ -107,7 +107,7 @@ const TeamSection = () => {
               </div>
               </ScrollReveal>
 
-              {/* <ScrollReveal>
+               {/* <ScrollReveal>
               <div className="mt-6 w-[220px] h-[280px] relative group overflow-hidden">
                   <Image
                     src="/images/team-3.jpg"
@@ -139,8 +139,8 @@ const TeamSection = () => {
                   <span className="absolute bottom-0 left-0 h-[6px] w-full bg-[#1ECDFE] transform scale-x-0 group-hover:scale-x-100 origin-left group-hover:origin-left transition-transform duration-500 ease-in-out" />
                 </div>
               </div>
-              </ScrollReveal>
-            </div> */}
+              </ScrollReveal> */}
+            </div> 
 
             <div className="flex flex-col gap-2 mt-32">
               <ScrollReveal>
