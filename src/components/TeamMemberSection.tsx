@@ -10,11 +10,11 @@ const teamMembers = [
     role: 'CEO',
     image: '/images/team-1.jpeg',
   },
-  {
-    name: ' K.S. Balaji',
-    role: 'HRPM',
-    image: '/images/team-3.jpg',
-  },
+  // {
+  //   name: ' K.S. Balaji',
+  //   role: 'HRPM',
+  //   image: '/images/team-3.jpg',
+  // },
   {
     name: 'Udayakumar Dhanabal',
     role: 'CTO',
