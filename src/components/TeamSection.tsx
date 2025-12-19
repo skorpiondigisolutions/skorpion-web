@@ -119,7 +119,7 @@ const TeamSection = () => {
                     <div className="transform translate-y-6 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-in-out flex flex-col items-center">
                       <h3 className="text-white hover:text-[#1ECDFE] text-[20px] font-sans font-bold mt-14">K.S. Balaji </h3>
                       <p className="text-gray-400 text-xs mt-3 mb-4 font-bold tracking-widest">HRPM</p>
-                      {/*
+                      {
                       <div className="flex gap-2 text-white">
                         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
                           <FaFacebookF className="hover:text-[#1ECDFE] cursor-pointer" />
